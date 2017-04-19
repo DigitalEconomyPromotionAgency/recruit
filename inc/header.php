@@ -81,7 +81,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
+            <li ><a href="index.php">Home</a></li>
+            <li ><a href="download.php">Download</a></li>
 
           </ul>
 
@@ -89,11 +90,11 @@
             <?php
                 if (isset($_SESSION['id'])) {
             ?>
-            <li><a class="fa fa-lg fa-sign-in" href="logout.php"></a></li>
+            <li><a href="logout.php"> Logout</a></li>
             <?
                 } else {
              ?>
-            <li><a class="fa fa-lg fa-sign-out" href="login.php"></a></li>
+            <li><a href="login.php"> Login</a></li>
             <?  } // else if ?>
           </ul>
         </div><!-- /.navbar-collapse -->

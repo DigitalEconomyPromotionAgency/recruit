@@ -20,9 +20,15 @@ if (isset($_GET["submit"])) {
     if ($_GET["score_1"]==null) $score_1="null"; else $score_1=$_GET["score_1"];
     if ($_GET["score_2"]==null) $score_2="null"; else $score_2=$_GET["score_2"];
     if ($_GET["score_3"]==null) $score_3="null"; else $score_3=$_GET["score_3"];
-    $result2=updateMemberPosById($_GET["id"],$_GET["position_id1"],$score_1,1);
-    $result3=updateMemberPosById($_GET["id"],$_GET["position_id2"],$score_2,2);
-    $result4=updateMemberPosById($_GET["id"],$_GET["position_id3"],$score_3,3);
+    $result1=updateScoreMemberPosById($_GET["id"],$_GET["position_id1"],$score_1,1);
+    $result2=updateScoreMemberPosById($_GET["id"],$_GET["position_id2"],$score_2,2);
+    $result3=updateScoreMemberPosById($_GET["id"],$_GET["position_id3"],$score_3,3);
+
+    if ($result1 && $result2 && $result3) {
+      alertMessage("Update score complete","success");
+    } else {
+      alertMessage("Cannot update data, something went wrong, please turn debug=on for more infomation","danger");
+    }
 
 }
 
@@ -48,9 +54,9 @@ if ($result!=null) {
 ?>
 <div class="col-sm-3 col-md-4 col-lg-4">
   <h2><?=$i;?> : <?=getPositionNameById($row_pos['position_id']);?></h2>
-  <input type="hidden" name="position_id<?=$i;?>" value="<?=$_GET["id"];?>">
+  <input type="hidden" name="position_id<?=$i;?>" value="<?=$row_pos['position_id'];?>">
   <div class="form-group">
-    <input type="number" class="form-control" id="" placeholder="score <?=$i;?>" name="score_<?=$i;?>" value="<?=$row_pos['score'];?>" min="0" max="1000" step="0.01" required>
+    <input type="number" class="form-control" id="" placeholder="score <?=$i;?>" name="score_<?=$i;?>" value="<?=$row_pos['score'];?>" min="0" max="1000" step="1" required>
     <p class="help-block">Help text here.</p>
   </div>
   <div class="well">

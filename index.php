@@ -14,7 +14,7 @@ include "inc/header.php";
 // show table header
 ?>
 
-<table id="data_table" class="display" >
+<table id="data_table" class="order-column" width="100%">
   <thead>
     <tr>
       <th>ID</th>
@@ -56,17 +56,27 @@ include "inc/header.php";
         // check row status if score_1 is noy null
         if ($score==false) {
     ?>
-    <td><div class="">Not Complete</div></td>
+    <td><span class="label label-warning">Not Complete</span></td>
     <?php
   } else {
     ?>
-    <td>Complete</td>
+    <td><span class="label label-success">Complete</span></td>
     <?php
   }
      ?>
     <td>
+      <?php
+        if ($pos_entry==true) {
+      ?>
       <a href="edit.php?id=<?=$row['id'];?>"><button type="submit" class="btn btn-primary fa fa-edit" > edit</button></a>
+      <?php
+        } // if pos entry
+        if ($score_entry==true) {
+       ?>
       <a href="score.php?id=<?=$row['id'];?>"><button type="submit" class="btn btn-success fa fa-star" > score</button></a>
+      <?php
+        } // if score entry
+      ?>
     </td>
   </tr>
 <?php

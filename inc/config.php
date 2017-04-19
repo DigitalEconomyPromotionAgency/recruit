@@ -14,6 +14,8 @@ if ($conn->connect_errno) {
 
 $score_readonly=true;
 $position_readonly=true;
+$score_entry=true;
+$pos_entry=true;
 
 $debug=false;
 

@@ -29,9 +29,33 @@ function db_query($sql){
 }
 
 
+// get total of member position
+function getTotalMemberPos(){
+  $sql="SELECT * FROM `position_has_member` WHERE score!='null' GROUP BY `member_id` ORDER BY `member_id` ASC";
+  $result=db_query_result($sql);
+  if ($result!=null) {
+    return mysqli_num_rows($result);
+  } else {
+    return "0";
+  }
+}
+
+// get list member position
+function getListMemberPos(){
+  $sql="SELECT * FROM `position_has_member` WHERE score!='null' GROUP BY `member_id` ORDER BY `member_id` ASC";
+  return db_query_result($sql);
+}
+
+// get pos by mem_id and order
+function getMemberPosScoreById($id){
+  $sql="SELECT * FROM `position_has_member` WHERE `member_id` = ".$id." ORDER BY `position_has_member`.`order` ASC";
+  return db_query_result($sql);
+}
+
+
 // get all position
 function getAllPosition() {
-  $sql="SELECT title FROM position WHERE total > 0";
+  $sql="SELECT * FROM position WHERE total > 0";
   return db_query_result($sql);
 }
 
@@ -172,6 +196,16 @@ function updateMemberPosById($mem_id, $pos_id, $score, $order){
     return db_query($sql);
 }
 
+// update member pos score by id
+function updateScoreMemberPosById($mem_id, $pos_id, $score, $order){
+  global $conn;
+  $sql="UPDATE `position_has_member` SET  `score` = ".$score."
+          WHERE `position_has_member`.`member_id` = ".$mem_id."
+              AND `position_has_member`.`order` = ".$order."
+              AND `position_id` = '".$pos_id."'";
+  return db_query($sql);
+}
+
 // update member by id
 function updateMemberById($id,$name){
     global $conn;
@@ -236,6 +270,19 @@ function getAuthen($login,$password) {
     }
 }
 
-function errorMessage($message) {
-  echo $message;
+// info, error, seccess
+function alertMessage($message,$type) {
+  if ($type=="info") {
+      ?>
+<div class="alert alert-info"><strong>Success!</strong> <?=$message; ?>.</div>
+      <?
+  } else if ($type=="error")  {
+    ?>
+<div class="alert alert-danger"><strong>Success!</strong> <?=$message; ?>.</div>
+    <?
+  } else if ($type=="success")  {
+    ?>
+<div class="alert alert-success"><strong>Success!</strong> <?=$message; ?>.</div>
+    <?
+  }
 }

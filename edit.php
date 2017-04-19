@@ -24,6 +24,11 @@ if (isset($_GET["submit"])) {
     $result3=updateMemberPosById($_GET["id"],$_GET["position_id2"],$score_2,2);
     $result4=updateMemberPosById($_GET["id"],$_GET["position_id3"],$score_3,3);
 
+    if ($result1 && $result2 && $result3 && $result4) {
+      alertMessage("Update position complete","success");
+    } else {
+      alertMessage("Cannot update data, something went wrong, please turn debug=on for more infomation","danger");
+    }
 
 }
 
