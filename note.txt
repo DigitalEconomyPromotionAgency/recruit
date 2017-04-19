@@ -1,0 +1,123 @@
+<?php
+
+// include config and utils functions
+include "inc/config.php";
+include "inc/utils.php";
+
+
+// is authen ?
+isAuthen();
+
+// include header
+include "inc/header.php";
+
+// show table header
+?>
+
+<table id="data_table" class="display " >
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Position 1</th>
+      <th>Position 2</th>
+      <th>Position 3</th>
+      <!-- <th> </th> -->
+    <tr>
+  </thead>
+
+<tbody>
+<?php
+  // get all member
+  $result=getMemberNotScore();
+  // list result
+  while($row = mysqli_fetch_array($result)){
+?>
+  <tr>
+    <td><?=$row['id'];?></td>
+    <td><?=$row['name'];?></td>
+    <!-- <td><img class="img-circle" width="36px" height="36px" src="img/<?=getImageProfile($row['id']); ?>"> <?=$row['name'];?></td> -->
+    <td><?=getPositionNameById($row['position_id1']); ?></td>
+    <td><?=getPositionNameById($row['position_id2']); ?></td>
+    <td><?=getPositionNameById($row['position_id3']); ?></td>
+<!--
+    <td>
+        <a href="score.php?id=<?=$row['id'];?>"><button type="submit" class="btn btn-primary fa fa-edit" > edit</button></a>
+    </td>
+    -->
+  </tr>
+<?php
+  } // while
+?>
+</tbody>
+</table>
+
+
+----
+
+<div class="form-group">
+  <label>Position 1</label>
+  <?php
+      // select option 1
+      renderPositionSelect($row['position_id1'],"position_id1");
+  ?>
+<div class="form-group">
+  <label>Score</label>
+  <input type="number" class="form-control" id="" placeholder="score 1" name="score_1" value="<?=$row['score_1'];?>" <?=getScoreFieldState();?>>
+</div>
+<div class="form-group">
+  <label>Position 2</label>
+  <?php
+      // select option 2
+      renderPositionSelect($row['position_id2'],"position_id2");
+  ?>
+</select>
+<div class="form-group">
+  <label>Score</label>
+  <input type="number" class="form-control" id="" placeholder="score 2" name="score_2" value="<?=$row['score_2'];?>" <?=getScoreFieldState();?>>
+</div>
+<div class="form-group">
+  <label>Position 3</label>
+  <?php
+      // select option 3
+      renderPositionSelect($row['position_id'],"position_id3");
+  ?>
+</div>
+<div class="form-group">
+  <label>Score</label>
+  <input type="number" class="form-control" id="" placeholder="score 3" name="score_3" value="<?=$row['score_3'];?>" <?=getScoreFieldState();?>>
+</div>
+----
+
+<div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div>
+      </div>
+
+---
+Count
+======
+SELECT count(*) as count FROM `member`
+WHERE position_id1=111001
+OR position_id2=111001
+OR position_id3=111001
+
+MAX
+===
+
+
+MIN
+===
