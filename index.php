@@ -68,12 +68,12 @@ include "inc/header.php";
       <?php
         if ($pos_entry==true) {
       ?>
-      <a href="edit.php?id=<?=$row['id'];?>"><button type="submit" class="btn btn-primary fa fa-edit" > edit</button></a>
+      <a href="edit.php?id=<?=$row['id'];?>"><button type="submit" class="fa fa-edit btn btn-primary " > Edit</button></a>
       <?php
         } // if pos entry
         if ($score_entry==true) {
        ?>
-      <a href="score.php?id=<?=$row['id'];?>"><button type="submit" class="btn btn-success fa fa-star" > score</button></a>
+      <a href="score.php?id=<?=$row['id'];?>"><button type="submit" class="fa fa-star btn btn-success" > Score</button></a>
       <?php
         } // if score entry
       ?>
