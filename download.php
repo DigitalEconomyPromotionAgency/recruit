@@ -39,7 +39,7 @@ while($row_mempos = mysqli_fetch_array($result_mempos)){
     $posstr=$row_mempos['member_id'].",";
         $result_mem_pos=getMemberPosScoreById($row_mempos['member_id']);
         while($row_mem_pos = mysqli_fetch_array($result_mem_pos)){
-          $posstr=$posstr.$row_mem_pos['score'].",";
+          $posstr=$posstr.($row_mem_pos['total']).",";
         }
     echo substr($posstr ,0, strlen($posstr)-1),"\n";
 }

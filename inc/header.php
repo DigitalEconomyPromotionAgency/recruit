@@ -53,7 +53,18 @@
               "infoFiltered": "(filtered from _MAX_ total records)"
           },
           stateSave: true
-        } );
+        });
+
+        $("#score_0,#score_1,#score_2,#score_3").keyup(function(){
+          var score_0 =parseInt($("#score_0").val() || 0) ;
+          var score_1 =parseInt($("#score_1").val() || 0);
+          var score_2 =parseInt($("#score_2").val() || 0);
+          var score_3 =parseInt($("#score_3").val() || 0);
+          $("#total_1").val(score_0+score_1);
+          $("#total_2").val(score_0+score_2);
+          $("#total_3").val(score_0+score_3);
+        });
+
       });
     </script>
 
@@ -82,8 +93,13 @@
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav">
             <li ><a href="index.php">Home</a></li>
-            <li ><a href="download.php">Download</a></li>
-
+            <?php
+                if (isset($_SESSION['id'])) {
+            ?>
+            <li ><a href="calculate.php">Result</a></li>
+            <?php
+                }
+             ?>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">

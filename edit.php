@@ -17,12 +17,12 @@ if (isset($_GET["submit"])) {
     //$result=updateMemberById($_GET["id"],$_GET["name"],$_GET["position_id1"],$_GET["position_id2"],$_GET["position_id3"],$_GET["score_1"],$_GET["score_2"],$_GET["score_3"]);
     $result1=updateMemberById($_GET["id"],$_GET["name"]);
     // fill null for null value
-    if ($_GET["score_1"]==null) $score_1="null"; else $score_1=$_GET["score_1"];
-    if ($_GET["score_2"]==null) $score_2="null"; else $score_2=$_GET["score_2"];
-    if ($_GET["score_3"]==null) $score_3="null"; else $score_3=$_GET["score_3"];
-    $result2=updateMemberPosById($_GET["id"],$_GET["position_id1"],$score_1,1);
-    $result3=updateMemberPosById($_GET["id"],$_GET["position_id2"],$score_2,2);
-    $result4=updateMemberPosById($_GET["id"],$_GET["position_id3"],$score_3,3);
+    // if ($_GET["score_1"]==null) $score_1="null"; else $score_1=$_GET["score_1"];
+    // if ($_GET["score_2"]==null) $score_2="null"; else $score_2=$_GET["score_2"];
+    // if ($_GET["score_3"]==null) $score_3="null"; else $score_3=$_GET["score_3"];
+    $result2=updateMemberPosById($_GET["id"],$_GET["position_id1"],1);
+    $result3=updateMemberPosById($_GET["id"],$_GET["position_id2"],2);
+    $result4=updateMemberPosById($_GET["id"],$_GET["position_id3"],3);
 
     if ($result1 && $result2 && $result3 && $result4) {
       alertMessage("Update position complete","success");

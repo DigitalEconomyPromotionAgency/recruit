@@ -65,7 +65,7 @@ function getTop3PosById($pos_id){
             WHERE position_id = ".$pos_id."
                 AND position_has_member.score!='null'
                 AND member.id=position_has_member.member_id
-            ORDER BY score DESC LIMIT 3";
+            ORDER BY score DESC LIMIT 5";
   return db_query_result($sql);
 }
 
@@ -83,7 +83,7 @@ function getTotalNumByPosId($pos_id){
 }
 
 function getMaxScoreByPosId($pos_id) {
-  $sql="SELECT MAX(score) as max FROM `position_has_member` WHERE `position_id` = ".$pos_id;
+  $sql="SELECT MAX(total) as max FROM `position_has_member` WHERE `position_id` = ".$pos_id;
   $result=db_query_result($sql);
   if ($result!=null) {
     while($row = mysqli_fetch_array($result)){
@@ -95,7 +95,7 @@ function getMaxScoreByPosId($pos_id) {
 }
 
 function getMinScoreByPosId($pos_id) {
-  $sql="SELECT MIN(score) as min FROM `position_has_member` WHERE `position_id` = ".$pos_id;
+  $sql="SELECT MIN(total) as min FROM `position_has_member` WHERE `position_id` = ".$pos_id;
   $result=db_query_result($sql);
   if ($result!=null) {
     while($row = mysqli_fetch_array($result)){
@@ -117,6 +117,19 @@ function getPositionNameById($id) {
     }
   } else {
     return "?";
+  }
+}
+
+// get position total by id
+function getPositionTotalById($id) {
+  $sql="SELECT total FROM position WHERE id=".$id." LIMIT 1";
+  $result=db_query_result($sql);
+  if ($result!=null) {
+    while($row = mysqli_fetch_array($result)){
+        return $row['total'];
+    }
+  } else {
+    return "0";
   }
 }
 
@@ -177,7 +190,7 @@ function getPositionFieldState(){
 
 
 function getMemberPosById($memid){
-    $sql="SELECT member.id,position_has_member.position_id,position.title,position_has_member.order,position_has_member.score
+    $sql="SELECT member.id,position_has_member.position_id,position.title,position_has_member.order,position_has_member.score,position_has_member.base,position_has_member.total
               FROM member,position,position_has_member
               WHERE member.id=position_has_member.member_id
               AND member.id=position_has_member.member_id
@@ -188,18 +201,20 @@ function getMemberPosById($memid){
 }
 
 // update member by id : id, pos, score, order
-function updateMemberPosById($mem_id, $pos_id, $score, $order){
+function updateMemberPosById($mem_id, $pos_id, $order){
     global $conn;
-    $sql="UPDATE `position_has_member` SET `position_id` = '".$pos_id."', `score` = ".$score."
+    $sql="UPDATE `position_has_member` SET `position_id` = '".$pos_id."'
             WHERE `position_has_member`.`member_id` = ".$mem_id."
                 AND `position_has_member`.`order` = ".$order;
     return db_query($sql);
 }
 
 // update member pos score by id
-function updateScoreMemberPosById($mem_id, $pos_id, $score, $order){
+function updateScoreMemberPosById($mem_id, $pos_id, $score, $base, $order){
   global $conn;
-  $sql="UPDATE `position_has_member` SET  `score` = ".$score."
+  // sum total
+  $total=$score+$base;
+  $sql="UPDATE `position_has_member` SET  `score` = ".$score.", `base` = ".$base.", `total` = ".$total."
           WHERE `position_has_member`.`member_id` = ".$mem_id."
               AND `position_has_member`.`order` = ".$order."
               AND `position_id` = '".$pos_id."'";
