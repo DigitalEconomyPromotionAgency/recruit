@@ -5,13 +5,21 @@ include "inc/config.php";
 include "inc/utils.php";
 
 // is authen ?
-isAuthen();
+//isAuthen();
 
 // include header
 include "inc/header.php";
 
+// load data from csv : output/calculated-score.
 
-// load data from csv : output/calculated-score.csv
+$filename = "output/calculated-score.csv";
+
+if (file_exists($filename)) {
+  if (filesize($filename)>1){
+    ?>
+    <div class="lastupdate">ข้อมูลวันที่ : <?=date("d F Y H:i:s", filemtime($filename)); ?></div>
+    <?
+
 
 ?>
 
@@ -27,7 +35,7 @@ include "inc/header.php";
 <?
 
 $row = 1;
-if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
+if (($handle = fopen($filename, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         $row++;
@@ -46,7 +54,10 @@ if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
                   $result_mem=getMemberById($mem_id);
                   // fucking while T_T
                   while($row_mem = mysqli_fetch_array($result_mem)){
-                    ?><img class="img-circle" width="36px" height="36px" src="img/<?=getImageProfile($mem_id); ?>"> <?=$row_mem['name'];?><?
+                    ?>
+                    <img class="img-circle" width="36px" height="36px" src="img/<?=getImageProfile($mem_id); ?>">
+                    <a href="score.php?id=<?=$mem_id;?>"><?=$row_mem['name'];?></a>
+                    <?
                   }
 
                 } else {
@@ -74,6 +85,7 @@ if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
 } else {
   alertMessage("Cannot read file output/calculated-score.csv or file not exist","danger");
 }
-
+}
+}
 
 ?>

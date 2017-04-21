@@ -94,15 +94,15 @@
           <ul class="nav navbar-nav">
             <li ><a href="index.php">Home</a></li>
             <?php
-                if (isset($_SESSION['id'])) {
+                //if (isset($_SESSION['id'])) {
             ?>
             <li ><a href="result.php">Result</a></li>
             <?php
-                }
+                //}
              ?>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right">
+          <!-- <ul class="nav navbar-nav navbar-right">
             <?php
                 if (isset($_SESSION['id'])) {
             ?>
@@ -112,7 +112,7 @@
              ?>
             <li><a href="login.php"> Login</a></li>
             <?  } // else if ?>
-          </ul>
+          </ul> -->
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>

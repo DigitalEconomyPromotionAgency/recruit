@@ -4,7 +4,7 @@
 include "inc/config.php";
 include "inc/utils.php";
 
-date_default_timezone_set('Asia/Bangkok');
+
 
 
 header("Content-type: text/csv");

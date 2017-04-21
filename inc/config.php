@@ -15,11 +15,15 @@ if ($conn->connect_errno) {
 $score_readonly=true;
 $position_readonly=true;
 
-// turn on/off buttton for position edit and score edit
+// turn on/off position edit and score edit
 $score_entry=true;
-$pos_entry=true;
 
+// turn on/off score edit
+$pos_entry=false;
+
+// trun debug on/off
 $debug=false;
+
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 

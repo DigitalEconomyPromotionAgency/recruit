@@ -6,7 +6,7 @@ include "inc/utils.php";
 
 
 // is authen ?
-isAuthen();
+//isAuthen();
 
 // include header
 include "inc/header.php";

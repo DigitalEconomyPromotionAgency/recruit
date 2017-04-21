@@ -6,7 +6,7 @@ include "inc/utils.php";
 
 
 // is authen ?
-isAuthen();
+//isAuthen();
 
 // include header
 include "inc/header.php";
@@ -54,7 +54,13 @@ if ($result!=null) {
     </div>
   </div>
 </div>
-
+<div class="row sipa-position">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="profile sipa-position">
+      <h3><?=$row['position'];?></h3>
+    </div>
+  </div>
+</div>
 
 <!-- row base score  -->
 <div class="row score">
