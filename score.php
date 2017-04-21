@@ -51,13 +51,7 @@ if ($result!=null) {
     </div>
     <div class="profile name">
       <h1><?=$row['name'];?></h1>
-    </div>
-  </div>
-</div>
-<div class="row sipa-position">
-  <div class="col-sm-12 col-md-12 col-lg-12">
-    <div class="profile sipa-position">
-      <h3><?=$row['position'];?></h3>
+      <small class="sipa_position"><?=$row['position'];?></small>
     </div>
   </div>
 </div>
