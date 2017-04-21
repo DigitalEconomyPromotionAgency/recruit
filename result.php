@@ -19,8 +19,9 @@ include "inc/header.php";
 <table id="data_table_result" class="table">
   <theader>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
+      <th>ชื่อ</th>
+      <th>ตำแหน่ง</th>
+      <th>ลำดับที่เลือก</th>
     </tr>
   </theader>
   <tbody>
@@ -41,7 +42,8 @@ if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
                 // if $c=0 means name, $c=1 means position
                 if ($c==0) {
                   // get name
-                  $result_mem=getMemberById($data[$c]);
+                  $mem_id=$data[$c];
+                  $result_mem=getMemberById($mem_id);
                   // fucking while T_T
                   while($row_mem = mysqli_fetch_array($result_mem)){
                     echo $row_mem['name'];
@@ -49,7 +51,8 @@ if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
 
                 } else {
                   // get position
-                  $result_pos=getPositionNameById($data[$c]);
+                  $pos_id=$data[$c];
+                  $result_pos=getPositionNameById($pos_id);
                   echo $result_pos;
                 }
             ?>
@@ -57,6 +60,9 @@ if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
             <?
         }
         ?>
+        <td>
+          <?=getMemberPosOrderById($pos_id,$mem_id);?>
+        </td>
         </tr>
         <?
 

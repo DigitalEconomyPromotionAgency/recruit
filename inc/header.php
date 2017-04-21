@@ -8,20 +8,19 @@
 
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/font-awesome.min.css">
 
     <link rel="stylesheet" href="style/style.css">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <!-- data table -->
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="style/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
 
     <script>
       $(document).ready( function () {
@@ -96,7 +95,7 @@
             <?php
                 if (isset($_SESSION['id'])) {
             ?>
-            <li ><a href="calculate.php">Result</a></li>
+            <li ><a href="result.php">Result</a></li>
             <?php
                 }
              ?>

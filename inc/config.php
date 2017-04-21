@@ -14,6 +14,8 @@ if ($conn->connect_errno) {
 
 $score_readonly=true;
 $position_readonly=true;
+
+// turn on/off buttton for position edit and score edit
 $score_entry=true;
 $pos_entry=true;
 

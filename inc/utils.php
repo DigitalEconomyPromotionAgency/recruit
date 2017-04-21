@@ -30,6 +30,7 @@ function db_query($sql){
 
 
 // get total of member position
+// TODO : score over xx point
 function getTotalMemberPos(){
   $sql="SELECT * FROM `position_has_member` WHERE score!='null' GROUP BY `member_id` ORDER BY `member_id` ASC";
   $result=db_query_result($sql);
@@ -41,6 +42,7 @@ function getTotalMemberPos(){
 }
 
 // get list member position
+// TODO : score over xx point
 function getListMemberPos(){
   $sql="SELECT * FROM `position_has_member` WHERE score!='null' GROUP BY `member_id` ORDER BY `member_id` ASC";
   return db_query_result($sql);
@@ -52,6 +54,19 @@ function getMemberPosScoreById($id){
   return db_query_result($sql);
 }
 
+// get pos by mem_id and order
+function getMemberPosOrderById($pos_id,$mem_id){
+  $sql="SELECT `order` FROM `position_has_member` WHERE member_id=".$mem_id." AND position_id=".$pos_id;
+  $result=db_query_result($sql);
+  if ($result!=null) {
+    while($row = mysqli_fetch_array($result)){
+        return $row['order'];
+    }
+  } else {
+    return "0";
+  }
+}
+
 
 // get all position
 function getAllPosition() {
@@ -60,6 +75,7 @@ function getAllPosition() {
 }
 
 // get top 3 position by id
+// TODO : total over xx point
 function getTop3PosById($pos_id){
   $sql="SELECT * FROM member,position_has_member
             WHERE position_id = ".$pos_id."

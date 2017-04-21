@@ -72,7 +72,6 @@ if ($result!=null) {
 <?
         } // end if first row
 ?>
-
 <!-- column position -->
 <div class="col-sm-3 col-md-4 col-lg-4">
   <div class="rank">
