@@ -74,7 +74,7 @@ if ($result!=null) {
 <!-- base score -->
 <div class="form-group score_field">
 คะแนนคุณสมบัติทั่วไป
-  <input type="number" class="form-control base_score" id="score_0" placeholder="คะแนนคุณสมบัติทั่วไป" name="score_0" value="<?=$row_pos['base'];?>" min="0" max="35" step="1" required>
+  <input type="number" class="form-control base_score" id="score_0" placeholder="คะแนนคุณสมบัติทั่วไป" name="score_0" value="<?=$row_pos['base'];?>" min="0" max="35.0" step="1" required>
 </div>
 <?
         } // end if first row
@@ -85,7 +85,7 @@ if ($result!=null) {
     <input type="hidden" name="position_id<?=$i;?>" value="<?=$row_pos['position_id'];?>">
     <div class="form-group">
       คะแนน (ไม่เกิน 65 คะแนน)
-      <input type="number" class="form-control score_form" id="score_<?=$i;?>" placeholder="คะแนนของตำแหน่งที่เลือก <?=$i;?>" name="score_<?=$i;?>" value="<?=$row_pos['score'];?>" min="0" max="65" step="1" required>
+      <input type="number" class="form-control score_form" id="score_<?=$i;?>" placeholder="คะแนนของตำแหน่งที่เลือก <?=$i;?>" name="score_<?=$i;?>" value="<?=$row_pos['score'];?>" min="0" max="65.0" step="1" required>
     </div>
   </div>
   <!-- position score -->

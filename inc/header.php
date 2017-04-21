@@ -56,10 +56,10 @@
         });
 
         $("#score_0,#score_1,#score_2,#score_3").keyup(function(){
-          var score_0 =parseInt($("#score_0").val() || 0) ;
-          var score_1 =parseInt($("#score_1").val() || 0);
-          var score_2 =parseInt($("#score_2").val() || 0);
-          var score_3 =parseInt($("#score_3").val() || 0);
+          var score_0 =parseFloat($("#score_0").val() || 0) ;
+          var score_1 =parseFloat($("#score_1").val() || 0);
+          var score_2 =parseFloat($("#score_2").val() || 0);
+          var score_3 =parseFloat($("#score_3").val() || 0);
           $("#total_1").val(score_0+score_1);
           $("#total_2").val(score_0+score_2);
           $("#total_3").val(score_0+score_3);
