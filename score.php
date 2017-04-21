@@ -51,7 +51,7 @@ if ($result!=null) {
     </div>
     <div class="profile name">
       <h1><?=$row['name'];?></h1>
-      <small class="sipa_position"><?=$row['position'];?></small>
+      <h3 class="sipa_position"><?=$row['position'];?></h3>
     </div>
   </div>
 </div>
