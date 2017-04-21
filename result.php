@@ -46,7 +46,7 @@ if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
                   $result_mem=getMemberById($mem_id);
                   // fucking while T_T
                   while($row_mem = mysqli_fetch_array($result_mem)){
-                    ?><img class="img-circle" width="36px" height="36px" src="img/<?=getImageProfile($row['id']); ?>"> <?=$row_mem['name'];?><?                    
+                    ?><img class="img-circle" width="36px" height="36px" src="img/<?=getImageProfile($mem_id); ?>"> <?=$row_mem['name'];?><?                    
                   }
 
                 } else {
