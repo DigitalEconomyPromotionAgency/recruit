@@ -44,7 +44,7 @@ if ($result!=null) {
 <input type="hidden" name="id" value="<?=$_GET["id"];?>">
 
 <!-- name -->
-<div class="row">
+<div class="row profile">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="profile image">
       <img width="128px" class="img-circle profile" src="img/<?=getImageProfile($_GET["id"]);?>">
@@ -57,7 +57,7 @@ if ($result!=null) {
 
 
 <!-- row base score  -->
-<div class="row">
+<div class="row score">
 <?php
       // list position
       $i=1;
@@ -66,14 +66,15 @@ if ($result!=null) {
         if ($i==1) {
 ?>
 <!-- base score -->
-<div class="form-group">
-  <input type="number" class="form-control" id="score_0" placeholder="คะแนนคุณสมบัติทั่วไป" name="score_0" value="<?=$row_pos['base'];?>" min="0" max="35" step="1" required>
+<div class="form-group score_field">
+คะแนนคุณสมบัติทั่วไป
+  <input type="number" class="form-control base_score" id="score_0" placeholder="คะแนนคุณสมบัติทั่วไป" name="score_0" value="<?=$row_pos['base'];?>" min="0" max="35" step="1" required>
 </div>
 <?
         } // end if first row
 ?>
 <!-- column position -->
-<div class="col-sm-3 col-md-4 col-lg-4">
+<div class="col-sm-4 col-md-4 col-lg-4">
   <div class="rank">
     <input type="hidden" name="position_id<?=$i;?>" value="<?=$row_pos['position_id'];?>">
     <div class="form-group">
@@ -88,10 +89,10 @@ if ($result!=null) {
     <div class="rank">
       คะแนนรวมของผู้สมัคร ในตำแหน่งนี้ =
       <!-- total readonly inputbox -->
-      <input type="number" id="total_<?=$i;?>" name="total_<?=$i;?>" value="<?=$row_pos['total'];?>" readonly>
+      <input type="number" class="total_score" id="total_<?=$i;?>" name="total_<?=$i;?>" value="<?=$row_pos['total'];?>" readonly>
       <!-- statitic -->
       <div class="well">
-        <div class="row">ผู้สมัครตำแหน่งนี้ = <?=getTotalNumByPosId($row_pos['position_id']); ?></div>
+        <div class="row">จำนวนผู้สมัครตำแหน่งนี้ = <?=getTotalNumByPosId($row_pos['position_id']); ?></div>
         <div class="row">คะแนนสูงที่สุด = <?=getMaxScoreByPosId($row_pos['position_id']); ?></div>
         <div class="row">คะแนนต่ำที่สุด = <?=getMinScoreByPosId($row_pos['position_id']); ?></div>
       </div>
@@ -111,7 +112,8 @@ if ($result!=null) {
         ?>
         <div class="row">
           <div class="col-sm">
-            <img class="img-circle" width="24px" src="img/<?=getImageProfile($row_top_pos['id']);?>"> <?=$row_top_pos['name'];?> = <?=$row_top_pos['total'];?>
+            <img class="img-circle" width="24px" src="img/<?=getImageProfile($row_top_pos['id']);?>">
+            <a href="score.php?id=<?=$row_top_pos['id'];?>"><?=$row_top_pos['name'];?></a> = <?=$row_top_pos['total'];?>
           </div>
         </div>
         <?

@@ -81,7 +81,7 @@ function getTop3PosById($pos_id){
             WHERE position_id = ".$pos_id."
                 AND position_has_member.total!='null'
                 AND member.id=position_has_member.member_id
-            ORDER BY score DESC LIMIT 5";
+            ORDER BY total DESC LIMIT 5";
   return db_query_result($sql);
 }
 

@@ -5,8 +5,28 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.score_field {
+    text-align: center;
+}
+
+.total_score {
+    width: 36px;
+    border: 0px;
+}
+
+.base_score {
+    width: 200px !important;
+    display: inline-block !important;
+}
+
 img.profile {
     float: right;
+    margin-bottom: -40px;
 }
 
 .well.candidate {
@@ -15,7 +35,7 @@ img.profile {
 }
 
 .position-title {
-    height: 100px;
+    height: 80px;
 }
 
 html {

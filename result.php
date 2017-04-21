@@ -14,7 +14,6 @@ include "inc/header.php";
 // load data from csv : output/calculated-score.csv
 
 ?>
-<meta http-equiv="refresh" content="30">
 
 <table id="data_table_result" class="table">
   <theader>
@@ -28,7 +27,7 @@ include "inc/header.php";
 <?
 
 $row = 1;
-if (($handle = fopen("output/score.csv", "r")) !== FALSE) {
+if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         $row++;
@@ -38,6 +37,7 @@ if (($handle = fopen("output/score.csv", "r")) !== FALSE) {
         for ($c=0; $c < $num; $c++) {
             ?>
             <td>
+
             <?php
                 // if $c=0 means name, $c=1 means position
                 if ($c==0) {
@@ -46,7 +46,7 @@ if (($handle = fopen("output/score.csv", "r")) !== FALSE) {
                   $result_mem=getMemberById($mem_id);
                   // fucking while T_T
                   while($row_mem = mysqli_fetch_array($result_mem)){
-                    echo $row_mem['name'];
+                    ?><img class="img-circle" width="36px" height="36px" src="img/<?=getImageProfile($row['id']); ?>"> <?=$row_mem['name'];?><?                    
                   }
 
                 } else {
