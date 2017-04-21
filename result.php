@@ -28,7 +28,7 @@ include "inc/header.php";
 <?
 
 $row = 1;
-if (($handle = fopen("output/calculated-score.csv", "r")) !== FALSE) {
+if (($handle = fopen("output/score.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         $row++;
