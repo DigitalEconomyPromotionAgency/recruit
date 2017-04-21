@@ -6,7 +6,8 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 .score_form {
-    width: 200px;
+    width: 64px !important;
+    display: inline-block !important;
 }
 
 input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
