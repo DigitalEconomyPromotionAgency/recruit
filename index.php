@@ -17,12 +17,12 @@ include "inc/header.php";
 <table id="data_table" class="order-column" width="100%">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Position 1</th>
-      <th>Position 2</th>
-      <th>Position 3</th>
-      <th>Status</th>
+      <th>ลำดับ</th>
+      <th>ชื่อ</th>
+      <th>ตำแหน่งที่เลือก 1</th>
+      <th>ตำแหน่งที่เลือก 2</th>
+      <th>ตำแหน่งที่เลือก 3</th>
+      <th>สถานะ</th>
       <th></th>
     </tr>
   </thead>
