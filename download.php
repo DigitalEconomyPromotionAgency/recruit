@@ -18,7 +18,7 @@ $total_pos=mysqli_num_rows($result_pos);
 echo $total_pos."\n";
 // list pos : pos_id,total
 while($row_pos = mysqli_fetch_array($result_pos)){
-    echo $row_pos['id'].",".($row_pos['total']*10)."\n";
+    echo $row_pos['id'].",".$row_pos['total']."\n";
 }
 
 // count member position
@@ -39,7 +39,7 @@ while($row_mempos = mysqli_fetch_array($result_mempos)){
     $posstr=$row_mempos['member_id'].",";
         $result_mem_pos=getMemberPosScoreById($row_mempos['member_id']);
         while($row_mem_pos = mysqli_fetch_array($result_mem_pos)){
-          $posstr=$posstr.($row_mem_pos['total']).",";
+          $posstr=$posstr.($row_mem_pos['total']*10).",";
         }
     echo substr($posstr ,0, strlen($posstr)-1),"\n";
 }
