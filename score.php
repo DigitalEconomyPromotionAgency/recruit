@@ -79,7 +79,7 @@ if ($result!=null) {
     <input type="hidden" name="position_id<?=$i;?>" value="<?=$row_pos['position_id'];?>">
     <div class="form-group">
       คะแนน (ไม่เกิน 65 คะแนน)
-      <input type="number" class="form-control score_form" id="score_<?=$i;?>" placeholder="คะแนนของตำแหน่งที่เลือก <?=$i;?>" name="score_<?=$i;?>" value="<?=$row_pos['score'];?>" min="0" max="65.0" step="1" required>
+      <input type="number" class="form-control score_form" id="score_<?=$i;?>" placeholder="คะแนนของตำแหน่งที่เลือก <?=$i;?>" name="score_<?=$i;?>" value="<?=$row_pos['score'];?>" min="0" max="65.0" step="0.1" required>
     </div>
   </div>
   <!-- position score -->
