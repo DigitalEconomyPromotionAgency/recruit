@@ -18,7 +18,7 @@ $total_pos=mysqli_num_rows($result_pos);
 echo $total_pos."\n";
 // list pos : pos_id,total
 while($row_pos = mysqli_fetch_array($result_pos)){
-    echo $row_pos['id'].",".$row_pos['total']."\n";
+    echo $row_pos['id'].",".($row_pos['total']*10)."\n";
 }
 
 // count member position
