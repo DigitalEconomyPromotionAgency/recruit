@@ -68,7 +68,7 @@ if ($result!=null) {
 <!-- base score -->
 <div class="form-group score_field">
 คะแนนคุณสมบัติทั่วไป
-  <input type="number" class="form-control base_score" id="score_0" placeholder="คะแนนคุณสมบัติทั่วไป" name="score_0" value="<?=$row_pos['base'];?>" min="0" max="35.0" step="1" required>
+  <input type="number" class="form-control base_score" id="score_0" placeholder="คะแนนคุณสมบัติทั่วไป" name="score_0" value="<?=$row_pos['base'];?>" min="0" max="35.0" step="0.1" required>
 </div>
 <?
         } // end if first row
